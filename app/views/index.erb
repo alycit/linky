@@ -1,0 +1,26 @@
+<% if @access_token %>
+
+  <img src="<%= @image_url %>" style="display: inline-block; margin-top: 30px; margin-right: 20px">
+
+  <h2 style="display: inline-block"><%= @name %></h2>
+  
+  <h3>Organizations:</h3>
+  <ul>
+    <% @organizations_array.each do |org| %>
+      <li><%= org["name"] %></li>
+    <% end %>
+  </ul>
+
+  <h3>Places lived:</h3>
+  <ul>
+    <% @places_lived_array.each do |place| %>
+      <li><%= place["value"] %></li>
+    <% end %>
+  </ul>
+
+  <button><a href="/sign_out">Sign out</a></button>
+
+<% else %>
+  <button><a href="/sign_in">Sign in with OAuth2</a></button>
+<% end %>
+
