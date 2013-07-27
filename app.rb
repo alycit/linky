@@ -12,7 +12,14 @@ require 'sinatra/activerecord'
 
 require 'erubis'
 
+APP_ROOT = Pathname.new(File.expand_path('./', __FILE__)).dirname
 APP_NAME = "linky"
+
+Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
+
+set :root, File.dirname(__FILE__)
+set :views, Proc.new { File.join(root, 'app', 'views') }
+
 DB = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/#{APP_NAME}_#{Sinatra::Application.environment}")
 DB_CONFIG = {
   :adapter  => DB.scheme == 'postgres' ? 'postgresql' : db.scheme,
