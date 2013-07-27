@@ -21,6 +21,8 @@ gem 'tux'
 
 gem 'erubis'
 
+gem 'pry'
+
 group :test do
   gem 'faker'
   gem 'rspec'
