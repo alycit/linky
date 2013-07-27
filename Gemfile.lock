@@ -14,9 +14,11 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     backports (3.3.3)
+    bond (0.4.3)
     builder (3.0.4)
     daemons (1.1.9)
     diff-lcs (1.2.4)
+    erubis (2.7.0)
     eventmachine (1.0.3)
     faker (1.2.0)
       i18n (~> 0.5)
@@ -29,6 +31,14 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.1.0)
+    ripl (0.7.0)
+      bond (~> 0.4.2)
+    ripl-multi_line (0.3.1)
+      ripl (>= 0.3.6)
+    ripl-rack (0.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
+      ripl (>= 0.3.5)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -58,6 +68,11 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.4.1)
+    tux (0.3.0)
+      ripl (>= 0.3.5)
+      ripl-multi_line (>= 0.2.4)
+      ripl-rack (>= 0.2.0)
+      sinatra (>= 1.2.1)
     tzinfo (0.3.37)
 
 PLATFORMS
@@ -66,6 +81,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 3.2.0)
   activesupport (~> 3.2.0)
+  erubis
   faker
   pg
   rake
@@ -75,3 +91,4 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-contrib
   thin
+  tux

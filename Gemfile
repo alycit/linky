@@ -17,6 +17,9 @@ gem 'sinatra-activerecord'
 gem 'rake'
 
 gem 'shotgun'
+gem 'tux'
+
+gem 'erubis'
 
 group :test do
   gem 'faker'
