@@ -2,55 +2,11 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-ul, li {
-	display: inline;	
-}
-
-h1 {
-	margin: 10px 20px;
-	float: left;
-	font-size: 1.5em;
-}
-
 h2 {
 	background-color: #999999;
 	height: 15px;
 	padding: 6px 0;
 	text-align: center;
-}
-
-#header {
-	height:60px;
-	background-color: #666666;
-	font-weight: bold;
-	font-size: 1.5em;
-}
-
-#header ul {
-	float:right;
-	margin: 15px 20px;
-}
-
-#header li {
- 	padding: 10px;
-}
-
-#tagFilter {
-	height: 35px;
-	background-color: #999999;
-}
-
-#tagFilter ul {
-	float:left;
-	margin: 10px 20px;
-}
-
-#tagFilter li:first-child {
-	font-weight: bold;	
-}
-
-#tagFilter li {
-	margin-right:10px;
 }
 
 #content {
@@ -68,10 +24,13 @@ h2 {
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
 	background: #fff;
 	width:200px;
-	min-width: 200px;
 	margin: 14px 7px 0 7px;
 	font-weight: normal;
 	font-size: .75em;
+}
+
+.tile ul, .tile li {
+	display: inline;
 }
 
 .tileDescription, .tileTags {
@@ -139,3 +98,131 @@ h2 {
     -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4);
     box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4); 
 }
+
+/* Smartphones & IPHONE 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px),
+	   only screen and (max-width: 580px) {
+/* Styles */
+	
+	ul, li {
+		display: list-item;	
+	}
+
+	#header, #content, #tagFilter {
+		width:100%;
+	}
+
+	h1 {
+		width:100%;
+		background-color: #666666;
+		padding:10px 0;
+		text-align: center;
+		font-size: 1.5em;
+		font-weight: bold;
+		border-bottom: 1px solid black;
+	}
+
+	h3 {
+
+		font-weight: bold;
+		text-align: center;
+		padding: 5px 0;
+		background-color: #bbbbbb;
+		border-bottom: 1px solid black;
+	}
+
+	#header ul {
+		float:none;
+		text-align: center;
+	}
+
+	#header li {
+		padding: 5px 0;
+		background-color: #999999;
+		border-bottom: 1px solid black;
+	}
+
+	#tagFilter ul {
+		float:none;
+		text-align: center;
+		background-color: #bbbbbb;
+		width:100%;
+		padding: 5px 0;
+		border-bottom: 1px solid black;
+	}
+
+	#tagFilter li {
+		display: inline;
+		margin: 0 5px;
+	}
+
+}
+
+/* TABLETS, DESKTOPS, LAPTOPS */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px), 
+only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape), 
+only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait),
+only screen and (min-width : 580px) {
+	
+	ul, li {
+		display: inline;	
+	}
+
+	h1 {
+		margin: 10px 20px;
+		float: left;
+		font-size: 1.5em;
+	}
+
+	h3 {
+		float:left;
+		margin: 10px 10px 10px 20px;
+		font-weight: bold;
+	}
+
+	#header {
+		height:60px;
+		background-color: #666666;
+		font-weight: bold;
+		font-size: 1.5em;
+	}
+
+	#header ul {
+		float:right;
+		margin: 15px 20px;
+	}
+
+	#header li {
+	 	padding: 10px;
+	}
+
+	#tagFilter {
+		height: 35px;
+		background-color: #999999;
+	}
+
+	#tagFilter ul {
+		float:left;
+		margin: 10px 20px 10px 0px;
+	}
+
+	#tagFilter li {
+		margin-right:10px;
+	}
+}
+
+/* Desktops and laptops ----------- */
+/*@media only screen and (min-width : 580px) {
+ Styles 
+	ul, li {
+		display: inline;	
+	}
+}*/
+
+/* iPhone 4 ----------- */
+/*@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles 
+	ul, li {
+		display: block;	
+	}
+}*/
