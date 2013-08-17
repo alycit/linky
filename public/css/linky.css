@@ -99,7 +99,7 @@ h2 {
     box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4); 
 }
 
-/* Smartphones & IPHONE 4 ----------- */
+/* Smartphones & IPHONE 4 & iphone 5 ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px),
 	   only screen and (max-width: 580px) {
 /* Styles */
