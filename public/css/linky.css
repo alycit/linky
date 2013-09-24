@@ -34,6 +34,8 @@ body {
 	margin:10px;
 	background-color: #aaa;
 	border-color: #aaa;
+	-webkit-box-shadow:  1px 2px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow:  1px 2px 5px 0px rgba(0, 0, 0, 1);
 }
 
 .thumbnail .btn-default {
