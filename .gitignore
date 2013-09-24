@@ -26,3 +26,4 @@ bin/
 .env
 *.swp
 *.log
+.DS_Store
