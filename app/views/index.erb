@@ -1,26 +1,60 @@
-<% if @access_token %>
-
-  <img src="<%= @image_url %>" style="display: inline-block; margin-top: 30px; margin-right: 20px">
-
-  <h2 style="display: inline-block"><%= @name %></h2>
-  
-  <h3>Organizations:</h3>
-  <ul>
-    <% @organizations_array.each do |org| %>
-      <li><%= org["name"] %></li>
-    <% end %>
-  </ul>
-
-  <h3>Places lived:</h3>
-  <ul>
-    <% @places_lived_array.each do |place| %>
-      <li><%= place["value"] %></li>
-    <% end %>
-  </ul>
-
-  <button id="sign-out"><a href="/sign_out">Sign out</a></button>
-
+<% if logged_in? %>	
+  <% if current_user.tags.any? %>
+	<div id="tagFilter">
+		<ul>
+    	<li><a href="/all"><button type="button" class="btn btn-info">all links</button></a></li>
+	    <% current_user.tags.each do |tag| %>
+	    <li><a href="/<%= tag.text %>"><button type="button" class="btn btn-info">#<%= tag.text %></button></a></li>
+	    <% end %>
+	   </ul>
+  </div>
+  <% end %>
+  <% if current_user.links.any? %>
+	<div id="content" class="well">
+		<% current_user.links.each do |link| %>
+		<div class="thumbnail">
+			<img class="thumb_image" src="<%= link.thumbnail_image %>" />
+			<div class="btn-toolbar">
+        <div class="btn-group">
+          <a href="<%= link.url %>" target="blank" class="btn btn-default">
+          	<span class="glyphicon glyphicon-circle-arrow-right"></span>
+          </a>
+          <a class="btn btn-default">
+          	<span class="glyphicon glyphicon-edit"></span>
+          </a>
+          <a class="btn btn-default">
+          	<span class="glyphicon glyphicon-remove-sign"></span>
+          </a>
+        </div>
+      </div>
+			<div class="caption">		
+				<p><%= link.description %></p>
+				<ul>
+					<% link.tags.each do |tag| %>
+					<li>#<%= tag.text %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<% end %>
+		<script>
+			 $(document).ready(function(){
+		        var $container = $('#content');
+		        $container.imagesLoaded(function(){
+		          $container.masonry({
+		          	"isFitWidth": true
+		          });
+		        });
+		      });
+		</script>
+	</div>
+	<% end %>
 <% else %>
-  <button><a href="/sign_in">Sign in with OAuth2</a></button>
+<div class="container">
+	<div class="jumbotron">
+    <h1>Welcome to linky!</h1>
+    <p>A fun little personal link manager.</p>
+    <p><a href="/sign_in" class="btn btn-primary btn-lg">Sign in with Google+</a></p>
+  </div>
+</div>
 <% end %>
-

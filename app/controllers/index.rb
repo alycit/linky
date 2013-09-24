@@ -7,19 +7,30 @@ get '/sign_in' do
 end
 
 get '/oauth2callback' do
-  @access_token = request_token(params["code"])
+  puts "callback"
+  if session[:user_id].nil?
+    puts "no session"
+    access_token = request_token(params["code"])
+    response = access_token.get('https://www.googleapis.com/plus/v1/people/me')
+    profile_info = JSON.parse(response.body)
+    session.delete(:request_token)
 
-  response = @access_token.get('https://www.googleapis.com/plus/v1/people/me')
+    #see if user exists in db.... if not, create them!
+    user = User.find_by_user_id(profile_info["id"])
 
-  profile_info = JSON.parse(response.body)
-  @image_url = profile_info["image"]["url"]
-  @name = profile_info["displayName"]
-  @organizations_array = profile_info["organizations"]
-  @places_lived_array = profile_info["placesLived"]
+    if user.nil?
+      User.create(
+                  user_id: profile_info["id"],
+                  display_name: profile_info["displayName"],
+                  first_name: profile_info["name"]["givenName"],
+                  last_name: profile_info["name"]["familyName"],
+                  profile_image: profile_info["image"]["url"])
+    end
 
-  session.delete(:request_token)
+    session[:user_id] = profile_info["id"]
+  end
 
-  erb :index
+  redirect '/'
 end
 
 get '/sign_out' do

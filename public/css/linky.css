@@ -1,0 +1,56 @@
+body {
+	margin-bottom: 20px;	
+}
+#content {
+	margin:auto;
+}
+
+#content ul, #content li {
+	display: inline;
+}
+
+#tagFilter {
+	text-align: center;
+	margin: 10px auto;
+}
+
+#tagFilter ul, #tagFilter li {
+	display:inline-block;
+}
+
+.thumbnail {
+	width:200px;
+	margin:10px;
+	background-color: #aaa;
+	border-color: #aaa;
+}
+
+.thumbnail .btn-default {
+	background-color: #093a40;
+	color: #eee;
+	border-color: #093a40;
+}
+
+.thumbnail .btn-default:hover, 
+.thumbnail .btn-default:focus, 
+.thumbnail .btn-default:active, 
+.thumbnail .btn-default.active {
+	background-color: #0d525b;
+	border-color: #0d525b;
+}
+
+.glyphicon {
+	font-size: 24px;
+}
+
+.btn-toolbar {
+	position:absolute;
+	visibility: hidden;
+	left:25px;
+	top:50px;
+}
+
+.thumbnail:hover .btn-toolbar {
+	visibility: visible;
+}
+
