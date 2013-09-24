@@ -8,7 +8,6 @@ def oauth_client
 end
 
 def auth_code_url
-
   request.host
   request.port
   oauth_client.auth_code.authorize_url(:redirect_uri => "http://#{generate_url}/oauth2callback",
