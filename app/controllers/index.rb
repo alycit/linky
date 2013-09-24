@@ -37,3 +37,28 @@ get '/sign_out' do
   session.clear
   redirect '/'
 end
+
+post '/add_link' do
+  tags = []
+  params[:tags].gsub(", ", ",").gsub(" ", "_").split(",").each do |tag|
+    new_tag = Tag.find_by_text(tag)
+    new_tag.nil? ? tags << Tag.create(text: tag) : tags << new_tag
+  end
+
+  current_user.links.build({"url"=> params[:url], "description"=> params[:description], "tags"=> tags })
+  current_user.save
+
+  #render a partial and fill in the content area
+end
+
+get '/delete/:id' do
+  Link.delete(params[:id])
+  redirect '/'
+end
+
+get '/tag/:tag_name' do
+  #get all the links associated with the current tag for the current user
+  #render a partial and fill in the content area. 
+  puts params[:tag_name]
+  redirect '/'
+end

@@ -64,3 +64,7 @@ body {
 .thumbnail:hover .btn-toolbar {
 	visibility: visible;
 }
+
+div.popover {
+	width:300px;
+}

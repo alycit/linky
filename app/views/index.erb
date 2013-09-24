@@ -2,9 +2,10 @@
   <% if current_user.tags.any? %>
 	<div id="tagFilter">
 		<ul>
-    	<li><a href="/all"><button type="button" class="btn btn-info">all links</button></a></li>
+			<!-- change tag invocations to ajax calls to render the content area -->
+    	<li><a href="/"><button type="button" class="btn btn-info">all links</button></a></li>
 	    <% current_user.tags.each do |tag| %>
-	    <li><a href="/<%= tag.text %>"><button type="button" class="btn btn-info">#<%= tag.text %></button></a></li>
+	    <li><a href="/tag/<%= tag.text %>"><button type="button" class="btn btn-info">#<%= tag.text %></button></a></li>
 	    <% end %>
 	   </ul>
   </div>
@@ -13,16 +14,16 @@
 	<div id="content" class="well">
 		<% current_user.links.each do |link| %>
 		<div class="thumbnail">
-			<img class="thumb_image" src="<%= link.thumbnail_image %>" />
+			<img class="thumb_image" src="http://free.pagepeeker.com/v2/thumbs.php?size=m&url=<%= link.url %>" />
 			<div class="btn-toolbar">
         <div class="btn-group">
-          <a href="<%= link.url %>" target="blank" class="btn btn-default">
+          <a href="<%= link.url %>" target="_blank" class="btn btn-default">
           	<span class="glyphicon glyphicon-circle-arrow-right"></span>
           </a>
           <a class="btn btn-default">
           	<span class="glyphicon glyphicon-edit"></span>
           </a>
-          <a class="btn btn-default">
+          <a href="/delete/<%= link.id %>" class="btn btn-default">
           	<span class="glyphicon glyphicon-remove-sign"></span>
           </a>
         </div>
@@ -39,13 +40,13 @@
 		<% end %>
 		<script>
 			 $(document).ready(function(){
-		        var $container = $('#content');
-		        $container.imagesLoaded(function(){
-		          $container.masonry({
-		          	"isFitWidth": true
-		          });
-		        });
-		      });
+	        var $container = $('#content');
+	        $container.imagesLoaded(function(){
+	          $container.masonry({
+	          	"isFitWidth": true
+	          });
+	        });
+	      });
 		</script>
 	</div>
 	<% end %>
@@ -53,7 +54,6 @@
 <div class="container">
 	<div class="jumbotron">
     <h1>Welcome to Linky!</h1>
-    <h1>L!</h1>
     <p>A fun little personal link manager.</p>
     <p><a href="/sign_in" class="btn btn-primary btn-lg">Sign in with Google+</a></p>
   </div>
