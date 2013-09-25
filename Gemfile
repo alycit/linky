@@ -24,6 +24,8 @@ gem 'awesome_print'
 
 gem 'rspec'
 
+gem 'newrelic_rpm'
+
 group :test do
   gem 'faker'
   gem 'rspec'

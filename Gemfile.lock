@@ -30,6 +30,7 @@ GEM
     multi_json (1.8.0)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.7.159)
     oauth2 (0.9.2)
       faraday (~> 0.8)
       httpauth (~> 0.2)
@@ -83,6 +84,7 @@ DEPENDENCIES
   activesupport (~> 3.2.0)
   awesome_print
   faker
+  newrelic_rpm
   oauth2
   pg
   rake

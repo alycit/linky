@@ -7,9 +7,7 @@ get '/sign_in' do
 end
 
 get '/oauth2callback' do
-  puts "callback"
   if session[:user_id].nil?
-    puts "no session"
     access_token = request_token(params["code"])
     response = access_token.get('https://www.googleapis.com/plus/v1/people/me')
     profile_info = JSON.parse(response.body)
@@ -39,17 +37,11 @@ get '/sign_out' do
 end
 
 post '/add_link' do
-  tags = []
-  params[:tags].gsub(", ", ",").gsub(" ", "_").split(",").each do |tag|
-    new_tag = Tag.find_by_text(tag)
-    new_tag.nil? ? tags << Tag.create(text: tag) : tags << new_tag
-  end
-
-  current_user.links.build({"url"=> params[:url], "description"=> params[:description], "tags"=> tags })
-  current_user.save
-
+  current_user.add_links_with_tags(params[:url], 
+                                   params[:description], 
+                                   parse_tags(params[:tags]))
   #render a partial and fill in the content area
-end
+end 
 
 get '/delete/:id' do
   Link.delete(params[:id])
@@ -59,6 +51,6 @@ end
 get '/tag/:tag_name' do
   #get all the links associated with the current tag for the current user
   #render a partial and fill in the content area. 
-  puts params[:tag_name]
+  # puts params[:tag_name]
   redirect '/'
 end
