@@ -39,4 +39,8 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 # Set up oauth2 client
