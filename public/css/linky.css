@@ -2,12 +2,18 @@ body {
 	margin-bottom: 20px;	
 }
 
-.navbar-brand, .jumbotron h1 {
+.navbar-brand, .jumbotron h1, h2.panel-title {
 	font-family: 'Lily Script One', cursive;
 }
 
 .navbar-brand {
 	padding: 15px 15px;
+	font-size: 24px;
+	line-height: 26px;
+}
+
+h2.panel-title {
+	padding: 5px 5px;
 	font-size: 24px;
 	line-height: 26px;
 }
@@ -20,6 +26,46 @@ body {
 	display: inline;
 }
 
+.panel-body h4  {
+	margin-left:10px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+.panel-body ol  {
+	list-style: decimal;
+	margin-left: 40px;
+}
+
+.panel-body li  {
+	margin-bottom: 15px;
+}
+
+.thumbnail .caption {
+	padding-right:0;
+	padding-left:0;
+}
+
+.caption p {
+	margin-bottom: 0px;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+.caption ul, .caption li {
+	margin-bottom: 0;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+.caption-spacer hr {
+	border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	margin: 9px 0;
+}
+
 #tagFilter {
 	text-align: center;
 	margin: 10px auto;
@@ -27,6 +73,11 @@ body {
 
 #tagFilter ul, #tagFilter li {
 	display:inline-block;
+}
+
+#tagFilter ul li {
+	margin-top:5px;
+	margin-bottom:5px;
 }
 
 .thumbnail {

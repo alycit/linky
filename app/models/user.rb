@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
 
 	validates_uniqueness_of :user_id
 
-	def add_links_with_tags(url, description, tags_input)
-		links.build(url: url, description: description, tags: create_tags(tags_input))
-		save
+	def add_link_with_tags(url, description, tags_input)
+		new_link = Link.create(url: url, user_id: id, description: description, tags: create_tags(tags_input))
+		new_link.errors if !new_link.errors.empty?
 	end
 
 	private

@@ -37,10 +37,10 @@ get '/sign_out' do
 end
 
 post '/add_link' do
-  current_user.add_links_with_tags(params[:url], 
-                                   params[:description], 
+  response = current_user.add_link_with_tags(params[:url], 
+                                   escape_html(params[:description]), 
                                    parse_tags(params[:tags]))
-  #render a partial and fill in the content area
+  response.to_json if response
 end 
 
 get '/delete/:id' do

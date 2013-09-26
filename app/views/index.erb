@@ -4,7 +4,7 @@
 		<ul>
 			<!-- change tag invocations to ajax calls to render the content area -->
     	<li><a href="/"><button type="button" class="btn btn-info">all links</button></a></li>
-	    <% current_user.tags.each do |tag| %>
+	    <% unique_tags_for_user.each do |tag| %>
 	    <li><a href="/tag/<%= tag.text %>"><button type="button" class="btn btn-info">#<%= tag.text %></button></a></li>
 	    <% end %>
 	   </ul>
@@ -14,7 +14,7 @@
 	<div id="content" class="well">
 		<% current_user.links.each do |link| %>
 		<div class="thumbnail">
-			<img class="thumb_image" src="http://free.pagepeeker.com/v2/thumbs.php?size=m&url=<%= link.url %>" />
+			<img class="thumb_image" src="http://images.shrinktheweb.com/xino.php?stwembed=1&stwxmax=200&stwymax=150&stwaccesskeyid=dae93d1acfe2563&stwurl=<%= link.url %>" />
 			<div class="btn-toolbar">
         <div class="btn-group">
           <a href="<%= link.url %>" target="_blank" class="btn btn-default">
@@ -28,14 +28,25 @@
           </a>
         </div>
       </div>
+      <% if !link.description.empty? || link.tags.count > 0 %>
 			<div class="caption">		
+				<% if !link.description.empty? %>
 				<p><%= link.description %></p>
-				<ul>
-					<% link.tags.each do |tag| %>
-					<li>#<%= tag.text %></li>
+				<% end %>
+				<% if !link.description.empty? && link.tags.count > 0 %>
+				<div class="caption-spacer">
+					<hr />
+				</div>
+				<% end %>
+				<% if link.tags.count > 0 %>
+				<p>
+					<% link.tags.each_with_index do |tag, index| %>
+						#<%= tag.text %><% if index < link.tags.length - 1 %>, <% end %>
 					<% end %>
-				</ul>
+				</p>
+				<% end %>
 			</div>
+			<% end %>
 		</div>
 		<% end %>
 		<script>
@@ -49,6 +60,25 @@
 	      });
 		</script>
 	</div>
+	<% else %>
+		<div class="col-md-3 col-sm-2"></div>
+		<div class="col-md-6 col-sm-8 col-xs-12" id="getting-started">
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h2 class="panel-title">Looks like you need to get started!</h2>
+			  </div>
+			  <div class="panel-body">
+			    <h4>Instructions:</h4>
+			    <ol>
+				    <li>Click the 'Add Link' button to save a link</li>
+				    <li>Enter a fully qualified, valid URL</li>
+				    <li>Give the link a description that is meaningful to you.</li>
+				    <li>Give the link a tag if you like.  You will be able to filter by those tags later.</li>
+				    <li>Click the add button and the link will now show up on your view!</ol>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-2"></div>
 	<% end %>
 <% else %>
 <div class="container">
