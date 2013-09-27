@@ -1,18 +1,16 @@
 <% if logged_in? %>	
-  <% if current_user.tags.any? %>
+  <% if @tags.any? %>
 	<div id="tagFilter">
 		<ul>
-			<!-- change tag invocations to ajax calls to render the content area -->
-    	<li><a href="/"><button type="button" class="btn btn-info">all links</button></a></li>
-	    <% unique_tags_for_user.each do |tag| %>
+	    <% @tags.each do |tag| %>
 	    <li><a href="/tag/<%= tag.text %>"><button type="button" class="btn btn-info">#<%= tag.text %></button></a></li>
 	    <% end %>
 	   </ul>
   </div>
   <% end %>
-  <% if current_user.links.any? %>
+  <% if @links.any? %>
 	<div id="content" class="well">
-		<% current_user.links.each do |link| %>
+		<% @links.each do |link| %>
 		<div class="thumbnail">
 			<img class="thumb_image" src="http://images.shrinktheweb.com/xino.php?stwembed=1&stwxmax=200&stwymax=150&stwaccesskeyid=dae93d1acfe2563&stwurl=<%= link.url %>" />
 			<div class="btn-toolbar">
@@ -40,7 +38,7 @@
 				<% end %>
 				<% if link.tags.count > 0 %>
 				<p>
-					<% link.tags.each_with_index do |tag, index| %>
+					<% link.tags.order("text").each_with_index do |tag, index| %>
 						#<%= tag.text %><% if index < link.tags.length - 1 %>, <% end %>
 					<% end %>
 				</p>

@@ -1,5 +1,6 @@
 def parse_tags(input)
-	clean_input(escape_html(input)).split(",")
+	tags = clean_input(escape_html(input)).split(",")
+	tags << "all"
 end
 
 def clean_input(text)

@@ -1,4 +1,9 @@
 get '/' do
+  if logged_in?
+    @links = Tag.find_links_by_tag_and_user(session[:current_view], current_user.id)
+    @tags = current_user.tags.order("text").uniq
+  end
+
   erb :index
 end
 
@@ -26,6 +31,7 @@ get '/oauth2callback' do
     end
 
     session[:user_id] = profile_info["id"]
+    session[:current_view] = "all"
   end
 
   redirect '/'
@@ -49,8 +55,6 @@ get '/delete/:id' do
 end
 
 get '/tag/:tag_name' do
-  #get all the links associated with the current tag for the current user
-  #render a partial and fill in the content area. 
-  # puts params[:tag_name]
+  session[:current_view] = params[:tag_name]
   redirect '/'
 end

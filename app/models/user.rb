@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 	    new_tag = Tag.find_by_text(tag)
 	    new_tag.nil? ? new_tags << Tag.create(text: tag) : new_tags << new_tag
 	  end
+
 	  new_tags
 	end
 end
