@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 		new_link.errors if !new_link.errors.empty?
 	end
 
+	def find_unique_tags
+		tags.order("text").uniq
+	end
+
 	private
 
 	def create_tags(tags_input)

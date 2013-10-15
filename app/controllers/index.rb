@@ -1,7 +1,7 @@
 get '/' do
   if logged_in?
     @links = Tag.find_links_by_tag_and_user(session[:current_view], current_user.id)
-    @tags = current_user.tags.order("text").uniq
+    @tags = current_user.find_unique_tags
   end
 
   erb :index
@@ -43,18 +43,25 @@ get '/sign_out' do
 end
 
 post '/add_link' do
-  response = current_user.add_link_with_tags(params[:url], 
+  if logged_in?
+    response = current_user.add_link_with_tags(params[:url], 
                                    escape_html(params[:description]), 
                                    parse_tags(params[:tags]))
-  response.to_json if response
+    response.to_json if response
+  end
 end 
 
 get '/delete/:id' do
-  Link.delete(params[:id])
+  if logged_in?
+    current_user.links.Link.delete(params[:id])  
+  end
+
   redirect '/'
 end
 
 get '/tag/:tag_name' do
-  session[:current_view] = params[:tag_name]
+  if logged_in?
+    session[:current_view] = params[:tag_name]
+  end
   redirect '/'
 end
