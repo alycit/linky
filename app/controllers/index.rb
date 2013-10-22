@@ -23,11 +23,11 @@ get '/oauth2callback' do
 
     if user.nil?
       User.create(
-                  user_id: profile_info["id"],
-                  display_name: profile_info["displayName"],
-                  first_name: profile_info["name"]["givenName"],
-                  last_name: profile_info["name"]["familyName"],
-                  profile_image: profile_info["image"]["url"])
+      user_id: profile_info["id"],
+      display_name: profile_info["displayName"],
+      first_name: profile_info["name"]["givenName"],
+      last_name: profile_info["name"]["familyName"],
+      profile_image: profile_info["image"]["url"])
     end
 
     session[:user_id] = profile_info["id"]
@@ -44,16 +44,31 @@ end
 
 post '/add_link' do
   if logged_in?
-    response = current_user.add_link_with_tags(params[:url], 
-                                   escape_html(params[:description]), 
-                                   parse_tags(params[:tags]))
+    response = current_user.add_link_with_tags(params[:url],
+                                               escape_html(params[:description]),
+                                               parse_tags(params[:tags]))
     response.to_json if response
   end
-end 
+end
+
+get '/add_link_to_user' do
+  @url = params[:url]
+  @ids = params[:ids]
+  erb :add_link, layout: false
+end
+
+post '/save_link' do
+  response = User.add_link_with_tags_for_user(params[:id],
+                                              params[:url],
+                                              escape_html(params[:description]),
+                                              parse_tags(params[:tags]))
+                                              
+  response.to_json if response
+end
 
 get '/delete/:id' do
   if logged_in?
-    current_user.links.Link.delete(params[:id])  
+    current_user.links.Link.delete(params[:id])
   end
 
   redirect '/'

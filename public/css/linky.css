@@ -18,6 +18,15 @@ h2.panel-title {
 	line-height: 26px;
 }
 
+.bookmarklet_form_wrapper {
+	padding:0 15px;
+}
+
+.bookmarklet_form_wrapper h2 {
+	margin:0;
+	margin-bottom:15px;
+}
+
 #content {
 	margin:auto;
 }

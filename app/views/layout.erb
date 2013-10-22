@@ -27,6 +27,7 @@
     <nav class="collapse header-collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+        <li><a href="<%= bookmarklet %>" title="Drag me to your bookmarks bar">Linky Bookmarklet</a></li>
         <li>
           <a id="add_link">Add Link</a>
           <div id="add_link_head" class="hide"><h4>Add Link Details</h4></div>

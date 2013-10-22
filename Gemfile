@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://www.rubygems.com'
 
 # PostgreSQL driver
 gem 'pg'
@@ -23,6 +23,8 @@ gem 'oauth2'
 gem 'awesome_print'
 
 gem 'rspec'
+
+gem 'sinatra-cross_origin'
 
 gem 'newrelic_rpm'
 

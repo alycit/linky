@@ -27,6 +27,8 @@ require 'net/http'
 
 require 'json'
 
+require 'sinatra/cross_origin'
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
