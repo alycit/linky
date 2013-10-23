@@ -1,4 +1,4 @@
-source 'http://www.rubygems.com'
+source 'https://www.rubygems.com'
 
 ruby "1.9.3"
 
