@@ -2,6 +2,8 @@ source 'http://www.rubygems.com'
 
 ruby "1.9.3"
 
+gem 'bundler'
+
 # PostgreSQL driver
 gem 'pg'
 
