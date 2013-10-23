@@ -68,7 +68,7 @@ end
 
 get '/delete/:id' do
   if logged_in?
-    current_user.links.Link.delete(params[:id])
+    Link.delete(params[:id])
   end
 
   redirect '/'
