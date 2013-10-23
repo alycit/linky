@@ -1,5 +1,5 @@
 GEM
-  remote: https://www.rubygems.com/
+  remote: http://www.rubygems.com/
   specs:
     activemodel (3.2.14)
       activesupport (= 3.2.14)
@@ -84,6 +84,7 @@ DEPENDENCIES
   activerecord (~> 3.2.0)
   activesupport (~> 3.2.0)
   awesome_print
+  bundler
   faker
   newrelic_rpm
   oauth2
