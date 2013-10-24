@@ -21,6 +21,7 @@ $(document).ready(function() {
 						$("#form_errors").removeClass("hidden");
 						$("#form_errors").addClass("has-error");
 					} else {
+						window.opener.location.reload(false);
 						window.close();
 					}	
 				}
