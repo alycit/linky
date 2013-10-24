@@ -27,6 +27,20 @@ $(document).ready(function() {
 			});
 		});	
 	});
+
+	$(".delete_button").on("click", function(event){
+		event.preventDefault();
+		$("#delete_url").val($(this).attr('data-url'));
+		$("#delete_warning").modal();
+	}); 
+
+	$("#delete_confirm").on("click", function(event){
+		event.preventDefault();
+		$.get($("#delete_url").val(), function(){
+			$('#delete_warning').modal('hide')
+			window.location.reload();
+		});
+	});
 });
 
 function formatErrors(error_hash) {

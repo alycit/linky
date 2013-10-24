@@ -130,3 +130,17 @@ h2.panel-title {
 div.popover {
 	width:300px;
 }
+
+div.modal-dialog {
+	width:250px;
+}
+
+div.modal-dialog h3 {
+	text-align: center;
+	margin:0;
+}
+
+div.modal-footer {
+	margin-top:0;
+	text-align: center;
+}

@@ -21,7 +21,7 @@
           <a class="btn btn-default">
           	<span class="glyphicon glyphicon-edit"></span>
           </a>
-          <a href="/delete/<%= link.id %>" class="btn btn-default">
+          <a data-toggle="modal" data-url="/delete/<%= link.id %>" href="#delete_warning" class="btn btn-default delete_button">
           	<span class="glyphicon glyphicon-remove-sign"></span>
           </a>
         </div>
@@ -58,6 +58,20 @@
 	      });
 		</script>
 	</div>
+	<div class="modal fade" id="delete_warning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+        	<h3>Are you sure?</h3>
+        </div>
+        <div class="modal-footer">
+        	<input type="hidden" id="delete_url"/>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="delete_confirm">Delete Link</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 	<% else %>
 		<div class="col-md-3 col-sm-2"></div>
 		<div class="col-md-6 col-sm-8 col-xs-12" id="getting-started">
